@@ -1,0 +1,28 @@
+.container-images {
+  margin-left: 20%;
+}
+
+img {
+  width: 50%;
+}
+
+.imgLeft img {
+  clip-path: polygon(0 0, 50% 0, 100% 100%, 0 100%);
+  margin-right: -12%;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.imgRight img {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);
+  margin-left: -12%;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.imgLeft img:hover,
+.imgRight img:hover {
+  transform: scale(1.1);
+  z-index: 10; /* Add this to bring the image above the other */
+}
+

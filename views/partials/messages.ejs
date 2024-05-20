@@ -1,0 +1,41 @@
+<% if(typeof errors != 'undefined') { %> <% errors.forEach(function(error){ %>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <%= error.msg %>
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+<%}); %> <%} %> <% if(success_msg != '') { %>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <%= success_msg %>
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+<% } %> <% if(error_msg != '') { %>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <%= error_msg %>
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+<% } %> <% if(danger_msg != ''){ %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <%= danger_msg %>
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+<% } %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const alerts = document.querySelectorAll(".alert");
+
+    alerts.forEach((alertElement) => {
+      setTimeout(() => {
+        alertElement.classList.remove("show");
+        alertElement.style.display = "none";
+      }, 5000); // Adjust the timeout duration as needed
+    });
+
+    // Automatically show the modal if a specific modal flag is set
+    var showModal = "<%= typeof showModal !== 'undefined' ? showModal : '' %>";
+    if (showModal) {
+      var myModal = new bootstrap.Modal(document.getElementById(showModal));
+      myModal.show();
+    }
+  });
+</script>

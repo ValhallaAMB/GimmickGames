@@ -1,0 +1,120 @@
+/* BODY */
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(25, 20px);
+  grid-template-rows: repeat(20, 20px);
+  margin: 5px;
+}
+
+.game-border-outer {
+  border: #595f43 solid 10px;
+  border-radius: 30px;
+  box-shadow: inset 0 0 0 10px #595f43;
+}
+
+.game-border-mid {
+  border: #abb78a solid 8px;
+  border-radius: 26px;
+  box-shadow: inset 0 0 0 10px #abb78a;
+}
+
+.game-border-inner {
+  border: #8b966c solid 20px;
+  border-radius: 20px;
+  box-shadow: inset 0 0 0 5px #8b966c;
+}
+
+#instruction-text {
+  margin-top: 300px;
+  color: #333;
+  width: 300px;
+}
+
+#score {
+  color: #abb78a;
+}
+
+#highScore {
+  color: #d8ddca;
+  display: none;
+}
+
+.game-border-outer,
+#logo {
+  background-color: #c4cfa3;
+}
+
+.food {
+  background-image: url("../images/snakeGameImg/snake-apple.png");
+  background-size: cover;
+}
+
+.snake-head-left {
+  background-image: url("../images/snakeGameImg/snake-head-left.png");
+  background-size: cover;
+}
+
+.snake-head-right {
+  background-image: url("../images/snakeGameImg/snake-head-right.png");
+  background-size: cover;
+}
+
+.snake-head-up {
+  background-image: url("../images/snakeGameImg/snake-head-up.png");
+  background-size: cover;
+}
+
+.snake-head-down {
+  background-image: url("../images/snakeGameImg/snake-head-down.png");
+  background-size: cover;
+}
+
+.snake-tail-left {
+  background-image: url("../images/snakeGameImg/snake-tail-left.png");
+  background-size: cover;
+}
+
+.snake-tail-right {
+  background-image: url("../images/snakeGameImg/snake-tail-right.png");
+  background-size: cover;
+}
+
+.snake-tail-up {
+  background-image: url("../images/snakeGameImg/snake-tail-up.png");
+  background-size: cover;
+}
+
+.snake-tail-down {
+  background-image: url("../images/snakeGameImg/snake-tail-down.png");
+  background-size: cover;
+}
+
+.snake-body-vertical {
+  background-image: url("../images/snakeGameImg/snake-body-vertical.png");
+  background-size: cover;
+}
+
+.snake-body-horizontal {
+  background-image: url("../images/snakeGameImg/snake-body-horizontal.png");
+  background-size: cover;
+}
+
+.snake-TL-corner {
+  background-image: url("../images/snakeGameImg/snake-TL-corner.png");
+  background-size: cover;
+}
+
+.snake-TR-corner {
+  background-image: url("../images/snakeGameImg/snake-TR-corner.png");
+  background-size: cover;
+}
+
+.snake-BL-corner {
+  background-image: url("../images/snakeGameImg/snake-BL-corner.png");
+  background-size: cover;
+}
+
+.snake-BR-corner {
+  background-image: url("../images/snakeGameImg/snake-BR-corner.png");
+  background-size: cover;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/css/snakeGameStyle.css" />
+  </head>
+  <body>
+    <div class="container d-flex justify-content-center mt-0">
+      <h1 id="score" name="score">000</h1>
+      <!-- <h1 id="highScore" name="highScore" class="d-inline-block">000</h1> -->
+    </div>
+    <main class="container d-flex align-items-center justify-content-center">
+      <div>
+        <div class="game-border-outer">
+          <div class="game-border-mid">
+            <div class="game-border-inner">
+              <div id="game-board"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <img
+        id="logo"
+        src="/images/snakeGameImg/snake-game-ai-gen.png"
+        alt="snake game logo"
+        class="position-absolute"
+      />
+      <h1
+        id="instruction-text"
+        class="fs-4 text-capitalize position-absolute"
+      >
+        Press the spacebar to start
+      </h1>
+    </main>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="scoreModal"
+      tabindex="-1"
+      data-bs-backdrop="static"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h5 class="modal-title text-center text-light" id="scoreModalLabel">
+              Game Over
+            </h5>
+            <h6 class="text-light text-center">
+              Your Score: <span id="finalScore"></span>
+            </h6>
+            <form id="scoreForm" method="POST" action="/scores/save">
+              <div class="text-center">
+                <input
+                  type="hidden"
+                  id="gameId"
+                  name="gameId"
+                  value="<%= gameId %>"
+                />
+                <input
+                  type="hidden"
+                  id="scoreInput"
+                  name="scoreValue"
+                  value=""
+                />
+                <% if (user){ %>
+                <button type="submit" class="btn btn-primary w-50">
+                  Play again
+                </button>
+                <% } else { %>
+                <a class="text-white btn btn-primary" href="/games/snakeGame"
+                  >Play again</a
+                >
+                <% } %>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/snakeGame.js"></script>
+  </body>
+</html>

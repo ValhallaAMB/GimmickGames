@@ -1,0 +1,35 @@
+body {
+  background-color: #001220;
+  overflow-x: hidden; /* Prevent scrolling */
+}
+
+.waves {
+  aspect-ratio: 900/450;
+  width: 100%;
+  height: 100vh; /* Ensure it covers the full viewport height */
+  background: no-repeat center fixed;
+  background-size: cover;
+  top: -10px; /* Adjust this value to move the SVG upwards */
+  position: absolute;
+  z-index: -1;
+}
+
+.layer1 {
+  background-image: url("../svg/layered-waves-haikei-yellow-blue.svg");
+}
+
+.form-control {
+  box-shadow: 12px 12px 2px 1px rgba(64, 109, 111, 0.2);
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px black inset !important;
+  -webkit-text-fill-color: #fff !important;
+  caret-color: white;
+  box-shadow: 12px 12px 2px 1px rgba(64, 109, 111, 0.2) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.4);
+}

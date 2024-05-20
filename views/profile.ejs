@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/css/scroller.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <style>
+      .password-fields {
+        display: none;
+      }
+
+      .table-container {
+        max-height: 230px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container mt-3">
+      <div class="row">
+        <div class="col-md-4 my-2">
+          <%- include("./partials/messages.ejs") %>
+          <form
+            class="mx-5 mx-md-0 needs-validation"
+            id="updateForm"
+            action="/users/update"
+            method="POST"
+            novalidate
+          >
+            <div class="form-floating mb-4">
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                value="<%= name %>"
+              />
+              <label for="name" class="text-light">Username</label>
+            </div>
+            <div class="form-floating mb-4">
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                value="<%= email %>"
+                placeholder="Email"
+              />
+              <label for="email" class="text-light">Email</label>
+            </div>
+
+            <div class="mb-3 text-center">
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="changePasswordBtn"
+              >
+                <i class="bi bi-key"></i> Change Password
+              </button>
+            </div>
+
+            <div
+              class="form-floating mb-4 password-fields"
+              style="display: none"
+            >
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                placeholder="Password"
+              />
+              <label for="floatingPassword" class="text-light form-label"
+                >Password</label
+              >
+            </div>
+
+            <div
+              class="form-floating mb-4 password-fields"
+              style="display: none"
+            >
+              <input
+                type="password"
+                class="form-control"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+              />
+              <label for="floatingPassword" class="text-light"
+                >Password Confirmation</label
+              >
+            </div>
+
+            <div class="password-fields mb-3 text-center" style="display: none">
+              <button
+                type="button"
+                class="btn btn-sm btn-primary"
+                id="uncoverPasswordBtn"
+              >
+                <i class="bi bi-eye-slash" id="eyeIcon"></i> Click uncover
+                password
+              </button>
+            </div>
+
+            <div class="mb-3 text-center">
+              <button type="submit" type="button" class="btn btn-primary">
+                Update Profile
+              </button>
+            </div>
+          </form>
+
+          <div class="text-center">
+            <button
+              type="button"
+              class="btn btn-danger btn-sm"
+              data-bs-toggle="modal"
+              data-bs-target="#deleteModal"
+            >
+              Delete your profile
+            </button>
+          </div>
+        </div>
+
+        <div class="col-md-8 px-5 pe-md-0 mt-2">
+          <div class="bg-white rounded-5 px-5 mb-3">
+            <div class="table-container pe-3 overflow-y-scroll">
+              <h3 class="mt-2">Snake Game Scores</h3>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Scores</th>
+                    <th scope="col">Date</th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                  <% let snakeCounter = 1 %> <% let snakeGameScores = userScores.filter(score =>
+                  score.game.name === "Snake Game"); %> <% if
+                  (snakeGameScores.length === 0) { %>
+                  <tr>
+                    <td>#</td>
+                    <td>No Scores</td>
+                    <td>No Date</td>
+                  </tr>
+                  <% } else { %> <% snakeGameScores.sort((a, b) => b.score - a.score).forEach(score => { %>
+                  <tr>
+                    <td><%= snakeCounter++ %></td>
+                    <td><%= score.score %></td>
+                    <td><%= score.date %></td>
+                  </tr>
+                  <% }) %> <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-5 px-5 mb-3">
+            <div class="table-container pe-3 overflow-y-scroll">
+              <h3 class="mt-2">Space Invaders Scores</h3>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Scores</th>
+                    <th scope="col">Date</th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                  <% let spaceCounter = 1 %> <% let spaceInvadersScores = userScores.filter(score =>
+                  score.game.name === "Space Invaders"); %> <% if
+                  (spaceInvadersScores.length === 0) { %>
+                  <tr>
+                    <td>#</td>
+                    <td>No Scores</td>
+                    <td>No Date</td>
+                  </tr>
+                  <% } else { %> <% spaceInvadersScores.sort((a, b) => b.score - a.score).forEach(score => { %>
+                  <tr>
+                    <td><%= spaceCounter++ %></td>
+                    <td><%= score.score %></td>
+                    <td><%= score.date %></td>
+                  </tr>
+                  <% }) %> <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <br><br><br><br>
+
+    <div class="modal fade" id="deleteModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content px-3">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 text-white">Delete Profile</h1>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="fs-6 text-white">
+              Are you sure you want to delete your profile?
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <form
+              id="deleteForm"
+              action="/users/delete"
+              method="POST"
+              class="text-center"
+            >
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/profileScript.js"></script>
+  </body>
+</html>

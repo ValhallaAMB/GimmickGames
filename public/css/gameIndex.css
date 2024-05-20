@@ -1,0 +1,24 @@
+.table-container {
+    max-height: 380px;
+  }
+
+  .card {
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  .card:hover {
+    transform: scale(1.1);
+  }
+
+  .card-img-overlay:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  @media only screen and (max-width: 768px) {
+    .card {
+      margin-left: auto;
+      margin-right: auto;
+      width: 430px;
+    }
+  }

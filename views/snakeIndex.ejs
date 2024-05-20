@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/css/scroller.css" />
+    <link rel="stylesheet" href="/css/gameIndex.css" />
+  </head>
+  <body>
+    <main class="container">
+      <div class="row mt-5">
+        <div class="card text-bg-dark col-md-6 mb-3 p-0">
+          <a href="/games/snakeGame"
+            ><img
+              src="/images/snake-game-cover.png"
+              class="card-img"
+              alt="Game image"
+            />
+            <div
+              class="card-img-overlay p-3 d-flex flex-column justify-content-end"
+            >
+              <h4 class="card-title text-white">Click to Play</h4>
+              <p class="card-text text-white">
+                Grow a long snake by eating apples, but don't hit yourself!
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-6 px-5 pe-md-0">
+          <div class="bg-white rounded-5 px-5 mb-3">
+            <div class="table-container pe-3 overflow-y-scroll">
+              <h3 class="mt-2">Snake Game Leaderboard (Top 50)</h3>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Player</th>
+                    <th scope="col">Scores</th>
+                    <th scope="col">Date</th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                  <% let counter = 1 %><% gameScores.forEach(score => { %>
+                  <tr>
+                    <td><%= counter++ %></td>
+                    <td><%= score.user.name %></td>
+                    <td><%= score.score %></td>
+                    <td><%= score.date.toDateString() %></td>
+                  </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <br /><br /><br /><br />
+  </body>
+</html>

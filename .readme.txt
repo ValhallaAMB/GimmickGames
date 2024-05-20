@@ -1,0 +1,21 @@
+Deployment Method (lol)
+
+To launch you have to open the project in vs code (im pretty sure this is all doable in a command prompt as well but I haven't personally tried it) 
+
+-Open terminal
+type in npm run dev
+If everything goes smoothly the console should say something like DB connected
+
+-Head on over to localhost:3000 to get to the temporary landing page
+-All routes are defined in the routes folder in the project directory if you wanna check all of them out
+-The rest of the work can be done within the application
+
+-To view the DB in a DBMS 
+
+ONLINE METHOD : At current time, idk what emails you guys have that you'll use to create your accounts for MongoDB, but once you do I'll be able to add everyone as an admin to our DB
+
+LOCAL METHOD : 
+-Download MongoDB Compass. 
+-Launch Compass. 
+-It will ask you for a connection string, enter the connection string below
+mongodb+srv://admin:admin@ggbackend.knbswhe.mongodb.net/?retryWrites=true&w=majority&appName=GGBackend

@@ -1,0 +1,16 @@
+.nav-link::after {
+  transition: all 0.2s;
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 100%;
+  opacity: 0;
+  background-color: aliceblue;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.nav-link:hover::after {
+  opacity: 1;
+}

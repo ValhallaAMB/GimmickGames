@@ -26,7 +26,7 @@
           <input
             type="email"
             class="form-control"
-            id="emal"
+            id="email"
             name="email"
             placeholder="name@example.com"
             value="<%= typeof email != 'undefined' ? email : '' %>"
@@ -67,8 +67,12 @@
           </button>
           <p class="text-white-50">
             Already have an account?
-            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal"
-              >Log in</a
+            <span
+              class="text-info"
+              data-bs-toggle="modal"
+              data-bs-target="#loginModal"
+              style="cursor: pointer"
+              >Log in</span
             >
           </p>
         </div>

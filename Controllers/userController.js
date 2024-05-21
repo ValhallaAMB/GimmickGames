@@ -30,7 +30,7 @@ const registerUser = (req, res) => {
   const { name, email, password, passwordConfirmation } = req.body;
   const lowerName = name.toLowerCase();
   const lowerEmail = email.toLowerCase();
-  console.log(name, email);
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   let errors = [];
 
   //  Check required fields
@@ -71,6 +71,17 @@ const registerUser = (req, res) => {
           passwordConfirmation,
           showModal: "registerModal", // Flag to indicate which modal to show
         });
+      } else if (lowerEmail == "" || !emailRegex.test(lowerEmail)) {
+        errors.push({ msg: "Invalid email" });
+        
+        res.render("profile", {
+          errors,
+          name,
+          email,
+          password,
+          confirmPassword,
+          showModal: "registerModal",
+        });
       } else {
         //  Check if Username already exists
         User.findOne({ name: lowerName }).then((user) => {
@@ -103,7 +114,7 @@ const registerUser = (req, res) => {
                   .save()
                   .then((user) => {
                     req.flash("success_msg", "Registration Successful!");
-                    res.redirect("/");
+                    res.render("index", { showModal: "loginModal" });
                   })
                   .catch((err) => console.log(err));
               })
@@ -168,7 +179,7 @@ const deleteUser = async (req, res) => {
     res.redirect("/");
   } catch (err) {
     req.flash("error_msg", "Error deleting user");
-    res.render("/profile"); 
+    res.render("/profile");
   }
 };
 
@@ -206,6 +217,18 @@ const updateUser = async (req, res) => {
     if (existingEmail && lowerEmail != originalEmail) {
       return res.render("profile", {
         danger_msg: "Email already exists",
+        name: originalName,
+        email: originalEmail,
+        password,
+        confirmPassword,
+        userScores,
+      });
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (lowerEmail == "" || !emailRegex.test(lowerEmail)) {
+      return res.render("profile", {
+        danger_msg: "Invalid email",
         name: originalName,
         email: originalEmail,
         password,
